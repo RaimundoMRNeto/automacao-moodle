@@ -1,0 +1,31 @@
+# ============================================================
+# ci.yml — Workflow para executar o main.py
+# ============================================================
+
+name: CI - Executar main.py
+
+on:
+  workflow_dispatch:       # permite rodar manualmente
+  schedule:
+    - cron: "0 11 * * *"   # executa todos os dias às 08:00 (hora de Belém)
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Executar script principal
+        run: python scripts/main.py

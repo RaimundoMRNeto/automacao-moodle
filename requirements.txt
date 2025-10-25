@@ -1,0 +1,10 @@
+# ============================================================
+# Lista de bibliotecas necessárias para o projeto Automação Moodle
+# Cada linha indica um pacote a ser instalado com 'pip install -r requirements.txt'
+# ============================================================
+
+# Biblioteca principal usada para automação do navegador (abrir o AVA, login, etc.)
+playwright==1.55.0
+
+# Biblioteca usada para ler variáveis armazenadas no arquivo .env (como usuário e senha)
+python-dotenv==1.0.1
